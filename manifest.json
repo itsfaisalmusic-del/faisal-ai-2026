@@ -1,10 +1,10 @@
 {
-  "name": "FAISAL AI",
+  "name": "FAISAL AI \u2014 Personal Assistant",
   "short_name": "FAISAL AI",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#0b1020",
-  "theme_color": "#10172a",
-  "description": "Personal AI creative assistant",
+  "background_color": "#090713",
+  "theme_color": "#090713",
+  "description": "FAISAL AI creative assistant: chat, photo, video and voice tools.",
   "icons": []
 }

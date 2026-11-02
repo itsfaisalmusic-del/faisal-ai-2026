@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090b12"><meta name="description" content="FAISAL AI personal creative assistant">
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
-<title>FAISAL AI</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090713">
+<meta name="description" content="FAISAL AI — your personal creative assistant">
+<link rel="manifest" href="./manifest.json">
+<link rel="stylesheet" href="./style.css">
+<title>FAISAL AI — Personal AI Assistant</title>
 </head>
 <body>
 <div class="app-shell">
@@ -13,38 +16,76 @@
   <button class="new-chat" id="newChat">＋ <span>New chat</span></button>
   <div class="side-label">YOUR WORKSPACE</div>
   <button class="side-link active" data-page="chat">◉ <span>AI Chat</span></button>
-  <button class="side-link" data-page="photo">▧ <span>Photo Studio</span><em>EDIT</em></button>
-  <button class="side-link" data-page="video">▣ <span>Video Studio</span><em>EDIT</em></button>
+  <button class="side-link" data-page="photo">▧ <span>Photo Studio</span><em>STUDIO</em></button>
+  <button class="side-link" data-page="video">▣ <span>Video Studio</span><em>STUDIO</em></button>
   <button class="side-link" data-page="voice">◖ <span>Voice Assistant</span></button>
-  <div class="side-bottom"><div class="profile"><div class="avatar">F</div><div><b>FAISAL AI</b><small>Personal workspace</small></div><span class="dots">•••</span></div><small class="version">STARTER VERSION 1.1</small></div>
+  <div class="side-bottom">
+    <div class="profile"><div class="avatar">F</div><div><b>FAISAL AI</b><small>Personal workspace</small></div><span class="dots">•••</span></div>
+    <small class="version">VERSION 2.0 · MOBILE READY</small>
+  </div>
 </aside>
 <div class="scrim" id="scrim"></div>
 <div class="main-area">
-<header class="topbar"><button id="openSidebar" class="icon-btn" aria-label="Open menu">☰</button><div class="mobile-brand">✦ FAISAL AI</div><div class="top-title" id="topTitle">AI Chat <span class="model-pill">Starter</span></div><div class="top-actions"><span class="status-dot"></span><span class="ready">READY</span><button class="icon-btn" id="themeHint" title="Premium dark interface">⋯</button></div></header>
+<header class="topbar">
+  <button id="openSidebar" class="icon-btn" aria-label="Open menu">☰</button>
+  <div class="mobile-brand">✦ FAISAL <span>AI</span></div>
+  <div class="top-title" id="topTitle">AI Chat <span class="model-pill">V2.0</span></div>
+  <div class="top-actions"><span class="status-dot"></span><span class="ready" id="connectionStatus">DEMO MODE</span><button class="icon-btn" id="clearChat" title="Clear chat" aria-label="Clear chat">⌫</button></div>
+</header>
 <main>
 <section id="chat" class="page active">
   <div class="chat-content">
-    <div class="hero"><div class="hero-icon">✦</div><p class="eyebrow">YOUR PERSONAL AI ASSISTANT</p><h1>What can I help you<br><span>create today?</span></h1><p class="hero-sub">Chat, design, edit and create — all in one place.</p></div>
-    <div id="messages" class="messages"><div class="message-row"><div class="bot-avatar">✦</div><div class="bubble bot">Assalam-o-Alaikum Faisal! 👋<br>Main tumhara creative assistant hoon. Neeche message likho ya koi studio select karo.</div></div></div>
-    <div class="suggestions"><button data-prompt="Mujhe ek cinematic photo poster banana hai">✧ Create a poster</button><button data-prompt="Mujhe video editing mein help chahiye">▶ Edit a video</button><button data-prompt="Mujhe ek idea do">✦ Give me an idea</button></div>
-    <div class="composer-wrap"><div class="composer"><button class="attach" title="Photo Studio kholo" id="attachPhoto">＋</button><textarea id="prompt" rows="1" placeholder="Message FAISAL AI..."></textarea><button id="send" class="send" aria-label="Send">↑</button></div><p class="disclaimer">FAISAL AI can make mistakes. Check important information.</p></div>
+    <div class="hero">
+      <div class="hero-icon">✦</div><p class="eyebrow">YOUR PERSONAL AI ASSISTANT</p>
+      <h1>What can I help you<br><span>create today?</span></h1>
+      <p class="hero-sub">Think, create, design and explore — all in one place.</p>
+      <div class="hero-prompt"><span>✦</span> Smart workspace for your ideas</div>
+    </div>
+    <div id="messages" class="messages" aria-live="polite">
+      <div class="message-row"><div class="bot-avatar">✦</div><div class="bubble bot">Assalam-o-Alaikum! 👋<br>Main FAISAL AI hoon. Apna sawal likho ya neeche se koi studio kholo.</div></div>
+    </div>
+    <div class="suggestions">
+      <button data-prompt="Mujhe ek professional cinematic poster ka idea do">✧ Create a poster</button>
+      <button data-prompt="Mujhe video editing ka step-by-step plan do">▶ Edit a video</button>
+      <button data-prompt="Mujhe aaj ke liye ek creative idea do">✦ Give me an idea</button>
+    </div>
+    <div class="composer-wrap">
+      <div class="composer"><button class="attach" title="Photo Studio kholo" id="attachPhoto">＋</button><textarea id="prompt" rows="1" placeholder="Message FAISAL AI..." aria-label="Message FAISAL AI"></textarea><button id="send" class="send" aria-label="Send">↑</button></div>
+      <p class="disclaimer">AI responses require a secure backend connection. Demo mode is active until then.</p>
+    </div>
   </div>
 </section>
 <section id="photo" class="page">
-  <div class="studio-head"><div class="studio-icon">▧</div><div><p class="eyebrow">CREATIVE WORKSPACE</p><h1>Photo Studio</h1><p class="hero-sub">Combine photos, add text and export your design.</p></div></div>
-  <div class="panel"><div class="panel-title">01 <span>UPLOAD YOUR PHOTOS</span></div><div class="upload-grid"><label class="upload">＋<b>First photo</b><small>Choose an image</small><input type="file" id="photoA" accept="image/*"></label><label class="upload">＋<b>Second photo</b><small>Choose an image</small><input type="file" id="photoB" accept="image/*"></label></div></div>
-  <div class="panel"><div class="panel-title">02 <span>LIVE CANVAS</span></div><div class="canvas-wrap"><canvas id="photoCanvas" width="900" height="600"></canvas></div><div class="controls"><input id="overlayText" placeholder="Add title e.g. FAISAL 333"><button id="addText">Add text</button><button id="downloadPhoto" class="primary">↓ Export PNG</button></div></div>
-  <p class="note">Starter editor: manual photo composition. AI face generation and automatic object removal are not connected yet.</p>
+  <div class="studio-head"><div class="studio-icon">▧</div><div><p class="eyebrow">CREATIVE WORKSPACE</p><h1>Photo Studio</h1><p class="hero-sub">Combine two photos, add a title and export a PNG.</p></div></div>
+  <div class="panel"><div class="panel-title">01 <span>UPLOAD YOUR PHOTOS</span></div><div class="upload-grid">
+    <label class="upload">＋<b>First photo</b><small>Choose from phone</small><input type="file" id="photoA" accept="image/*"></label>
+    <label class="upload">＋<b>Second photo</b><small>Choose from phone</small><input type="file" id="photoB" accept="image/*"></label>
+  </div></div>
+  <div class="panel"><div class="panel-title">02 <span>LIVE CANVAS</span></div><div class="canvas-wrap"><canvas id="photoCanvas" width="900" height="600"></canvas></div>
+    <div class="controls"><input id="overlayText" placeholder="Add title e.g. FAISAL 333" aria-label="Overlay text"><button id="addText">Add text</button><button id="downloadPhoto" class="primary">↓ Export PNG</button></div>
+  </div>
+  <p class="note">Photo Studio uses local canvas editing. AI image generation and automatic background removal need a connected image service.</p>
 </section>
 <section id="video" class="page">
-  <div class="studio-head"><div class="studio-icon">▣</div><div><p class="eyebrow">CREATIVE WORKSPACE</p><h1>Video Studio</h1><p class="hero-sub">Preview your video and play a selected time range.</p></div></div>
-  <div class="panel"><div class="panel-title">01 <span>YOUR VIDEO</span></div><label class="upload wide">＋<b>Select video</b><small>Choose a video from your phone</small><input type="file" id="videoFile" accept="video/*"></label><video id="videoPreview" controls playsinline></video><div class="controls"><label>Start (sec)<input id="trimStart" type="number" min="0" value="0"></label><label>End (sec)<input id="trimEnd" type="number" min="0" value="10"></label><button id="playClip" class="primary">▶ Play range</button></div><p id="videoStatus" class="note">Video preview ready when you select a file. MP4 export is not included yet.</p></div>
+  <div class="studio-head"><div class="studio-icon">▣</div><div><p class="eyebrow">CREATIVE WORKSPACE</p><h1>Video Studio</h1><p class="hero-sub">Preview a video and play a selected time range.</p></div></div>
+  <div class="panel"><div class="panel-title">01 <span>YOUR VIDEO</span></div>
+    <label class="upload wide">＋<b>Select video</b><small>Choose a video from your phone</small><input type="file" id="videoFile" accept="video/*"></label>
+    <video id="videoPreview" controls playsinline></video>
+    <div class="controls"><label>Start (sec)<input id="trimStart" type="number" min="0" value="0"></label><label>End (sec)<input id="trimEnd" type="number" min="0" value="10"></label><button id="playClip" class="primary">▶ Play range</button></div>
+    <p id="videoStatus" class="note">Select a video to preview it. This version does not export a trimmed MP4.</p>
+  </div>
 </section>
 <section id="voice" class="page">
-  <div class="voice-layout"><div class="voice-orb">◖</div><p class="eyebrow">HANDS-FREE ASSISTANT</p><h1>Talk to <span>FAISAL AI</span></h1><p class="hero-sub">Speak naturally. Your browser will convert speech to text where supported.</p><button id="startVoice" class="primary voice-start">● &nbsp; Start speaking</button><div id="voiceText" class="voice-text">Your recognized voice will appear here.</div><button id="speakReply" class="secondary">♫ Read demo reply aloud</button><p class="note">Microphone permission and browser speech support are required.</p></div>
+  <div class="voice-layout"><div class="voice-orb">◖</div><p class="eyebrow">HANDS-FREE ASSISTANT</p><h1>Talk to <span>FAISAL AI</span></h1>
+    <p class="hero-sub">Speak and convert your words to text where browser support is available.</p>
+    <button id="startVoice" class="primary voice-start">● &nbsp; Start speaking</button>
+    <div id="voiceText" class="voice-text">Your recognized voice will appear here.</div>
+    <button id="speakReply" class="secondary">♫ Read a sample aloud</button>
+    <p class="note">Microphone permission and browser speech support are required.</p>
+  </div>
 </section>
 </main>
 </div>
 </div>
-<script src="app.js"></script>
+<script src="./app.js"></script>
 </body></html>
