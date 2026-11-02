@@ -1,0 +1,10 @@
+{
+  "name": "FAISAL AI",
+  "short_name": "FAISAL AI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#10172a",
+  "description": "Personal AI creative assistant",
+  "icons": []
+}
